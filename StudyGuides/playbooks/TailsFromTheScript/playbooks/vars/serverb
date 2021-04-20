@@ -1,4 +1,4 @@
-gradescript: tails_serverb.sh
+gradescript: HorrorAtHome1.sh
 vdb_partsize: 256MiB
 uninviteduser: uninviteduser
 existingmountpoint: /Imminent/
