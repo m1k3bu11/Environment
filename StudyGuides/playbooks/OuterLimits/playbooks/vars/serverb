@@ -12,3 +12,4 @@ existingfstype: xfs
 sdb_partsize: 256MB
 sdb2_start: 256MB
 sdb2_end: 1024MB
+existinglvsize: 400M
