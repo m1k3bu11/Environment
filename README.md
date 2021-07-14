@@ -2,6 +2,22 @@
 
 This is an environment build using Ansible, Vagrant, and VirtualBox or libvirt/kvm to create an environment suitable for study and practice for the RHEL 8 RHCSA exam. In order to make use of this envoronment, some software will need to be installed on your computer. The computer you use for this should have at least 8Gb of RAM and a CPU that has at least 2 cores. You may be able to get away with a little less, however for the optimum experience it is recommended. This can be setup on hosts with a variety of operating systems.
 # Environment Build Instructions
+
+## Windows
+- If using Windows:
+- [Install the Latest Version of Vagrant](https://www.vagrantup.com/downloads.html)
+- [Install the Latest Version of Virtualbox and Virtual Box Extension Pack](https://www.virtualbox.org/wiki/Downloads)
+- Then install the following vagrant plugin via PowerShell as Administrator `vagrant plugin install vagrant-guest_ansible`
+
+
+##### Once the above software is installed. Do the following if you're running the environment on Windows:
+1. Create a separate `~/bin` directory and `cd` to it using the same PowerShell/Terminal as Administrator/Root.  (The directory doesn't have to be ~/bin, it can be anything you want.)
+2. Use your browser of choice and navigate to https://github.com/m1k3bu11/Environment.git, press the green “Clone or download” button then the “Download ZIP” button. Or use Github Desktop (See below).
+3. Once downloaded, unzip the file and move it to the directory you created earlier, `~/bin` in the above example.
+4. Use PowerShell/Terminal as Administrator/Root again and cd to the `~/bin/Environment` directory then run `vagrant up` to deploy the environment. (If the environment has a designated repo VM it will take the longest to deploy the first time only, this is because the repo system has all the packages available to the base release but will be quicker on subsequent deployments.)
+
+
+
 ## macOS
 _Gatekeeper will block virtualbox from installing. All you have to do is go into Security & Privacy of System Preferences and click Allow under the General tab and rerun installation._
 ##### Install all at once with the command below:
@@ -41,20 +57,6 @@ systemctl stop packagekit; dnf -y install https://dl.fedoraproject.org/pub/epel/
 2. Clone the environment repo to it with `https://github.com/OpenCloudJedi/Environment.git`
 3. Change to the `Environment` directory that is now in your `~/bin` directory.
 4. Run `vagrant up` to deploy the environment (If the environment has a designated repo VM it will take the longest to deploy the first time only, this is because the repo system has all the packages available to the base release but will be quicker on subsequent deployments.)
-
-## Windows
-- If using Windows:
-- [Install the Latest Version of Vagrant](https://www.vagrantup.com/downloads.html)
-- [Install the Latest Version of Virtualbox and Virtual Box Extension Pack](https://www.virtualbox.org/wiki/Downloads)
-- Then install the following vagrant plugin via PowerShell as Administrator `vagrant plugin install vagrant-guest_ansible` 
-
-
-##### Once the above software is installed. Do the following if you're running the environment on Windows:
-1. Create a separate `~/bin` directory and `cd` to it using the same PowerShell/Terminal as Administrator/Root.  (The directory doesn't have to be ~/bin, it can be anything you want.)
-2. Use your browser of choice and navigate to https://github.com/m1k3bu11/Environment.git, press the green “Clone or download” button then the “Download ZIP” button. Or use Github Desktop (See below).
-3. Once downloaded, unzip the file and move it to the directory you created earlier, `~/bin` in the above example.
-4. Use PowerShell/Terminal as Administrator/Root again and cd to the `~/bin/Environment` directory then run `vagrant up` to deploy the environment. (If the environment has a designated repo VM it will take the longest to deploy the first time only, this is because the repo system has all the packages available to the base release but will be quicker on subsequent deployments.)
-
 
 ## Debian/Ubuntu
 _NOTE - If it's been awhile since you've run apt update, do that first. Reboot if the kernel was updated._
