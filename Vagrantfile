@@ -29,13 +29,15 @@ Vagrant.configure("2") do |config|
     server1.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--memory", 768]
       v.customize ["modifyvm", :id, "--cpus", 1]
-      v.customize ["modifyvm", :id, "--vram", 12]
+      v.customize ["modifyvm", :id, "--vram", 16]
       v.customize ["modifyvm", :id, "--accelerate3d", "off"]
     end
     server1.vm.provider :libvirt do |libvirt|
       libvirt.memory = 786
       libvirt.cpus = 1
-      libvirt.video_vram = 12
+      libvirt.video_vram = 16
+      libvirt.graphics_type = "spice"
+      libvirt.video_type = "qxl"
     end
   end
   # Server2.
@@ -49,7 +51,7 @@ Vagrant.configure("2") do |config|
     server2.vm.provider :virtualbox do |v|
       v.customize ["modifyvm", :id, "--memory", 768]
       v.customize ["modifyvm", :id, "--cpus", 1]
-      v.customize ["modifyvm", :id, "--vram", 12]
+      v.customize ["modifyvm", :id, "--vram", 16]
       v.customize ["modifyvm", :id, "--accelerate3d", "off"]
       unless File.exist?(disk1)
         v.customize ['createhd', '--filename', disk1, '--variant', 'Fixed', '--size', 2 * 1024]
@@ -63,10 +65,12 @@ Vagrant.configure("2") do |config|
     server2.vm.provider :libvirt do |libvirt|
       libvirt.memory = 786
       libvirt.cpus = 1
-      libvirt.video_vram = 12
+      libvirt.video_vram = 16
       libvirt.storage :file, :size => '2G', :bus => 'sata', :device => 'sdb'
       libvirt.storage :file, :size => '4G', :bus => 'sata', :device => 'sdc'
       libvirt.storage :file, :size => '1G', :bus => 'sata', :device => 'sdd'
+      libvirt.graphics_type = "spice"
+      libvirt.video_type = "qxl"
     end
   end
 
@@ -96,6 +100,8 @@ Vagrant.configure("2") do |config|
       libvirt.memory = 4096
       libvirt.cpus = 2
       libvirt.video_vram = 128
+      libvirt.graphics_type = "spice"
+      libvirt.video_type = "qxl"
     end
   end
 end
